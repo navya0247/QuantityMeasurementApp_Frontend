@@ -6,9 +6,9 @@ import ProfileView from '../components/ProfileView';
 import './DashboardPage.css';
 
 export default function DashboardPage() {
-  const [activeView, setActiveView] = useState('measure');
+  const [activeView,   setActiveView]   = useState('measure');
   const [selectedType, setSelectedType] = useState(null);
-  const [history, setHistory] = useState([]);
+  const [history,      setHistory]      = useState([]);
 
   const addHistory = (item) => {
     setHistory(prev => [item, ...prev].slice(0, 50));
@@ -37,6 +37,7 @@ export default function DashboardPage() {
             setSelectedType={setSelectedType}
             onAddHistory={addHistory}
             history={history}
+            setActiveView={setActiveView}
           />
         )}
         {activeView === 'history' && (

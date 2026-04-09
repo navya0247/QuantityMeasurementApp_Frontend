@@ -30,7 +30,6 @@ export default function Sidebar({ activeView, setActiveView, histCount, onQuickT
       {/* Main nav */}
       <div className="sb-nav">
         <div className="sb-section-lbl">Menu</div>
-
         <button
           className={`s-item ${activeView === 'measure' ? 'active' : ''}`}
           onClick={() => setActiveView('measure')}
@@ -38,7 +37,6 @@ export default function Sidebar({ activeView, setActiveView, histCount, onQuickT
           <i className="fas fa-calculator" />
           <span>Measure</span>
         </button>
-
         <button
           className={`s-item ${activeView === 'history' ? 'active' : ''}`}
           onClick={() => setActiveView('history')}
@@ -48,7 +46,6 @@ export default function Sidebar({ activeView, setActiveView, histCount, onQuickT
           <span>History</span>
           {histCount > 0 && <span className="s-badge">{histCount > 9 ? '9+' : histCount}</span>}
         </button>
-
         <button
           className={`s-item ${activeView === 'profile' ? 'active' : ''}`}
           onClick={() => setActiveView('profile')}
@@ -60,7 +57,7 @@ export default function Sidebar({ activeView, setActiveView, histCount, onQuickT
 
       <div className="sb-div" />
 
-      {/* Type shortcuts */}
+      {/* Type shortcuts — original column layout */}
       <div className="sb-types">
         <div className="sb-section-lbl">Type</div>
         {Object.keys(TYPE_ICONS).map(t => (
@@ -88,9 +85,7 @@ export default function Sidebar({ activeView, setActiveView, histCount, onQuickT
           </div>
           <div className="u-name">{user ? user.fullName : 'Guest'}</div>
           <div className="u-role">{user ? user.role : 'Not signed in'}</div>
-
           {user && <div className="u-badge">● Active</div>}
-
           {user ? (
             <button className="sb-logout-btn" onClick={logout}>
               <i className="fas fa-sign-out-alt" /> Logout

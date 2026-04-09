@@ -112,6 +112,7 @@
   width: 100%;
   text-align: left;
   transition: background 0.18s, color 0.18s;
+  font-family: 'DM Sans', sans-serif;
 }
 .type-sub-item:hover { background: var(--surface2); }
 .type-sub-item.active { background: var(--surface2); font-weight: 600; }

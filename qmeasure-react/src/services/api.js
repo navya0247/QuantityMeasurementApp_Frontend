@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE = 'http://localhost:5000';
+const BASE = 'https://quantitymeasurementapp-o2tb.onrender.com';
 
 const api = axios.create({ baseURL: BASE });
 

@@ -15,7 +15,8 @@
       html { color-scheme: light only; }
       body {
         font-family: 'DM Sans', sans-serif;
-        overflow: hidden;
+        /* FIXED: was overflow:hidden which broke mobile scrolling */
+        overflow: auto;
         height: 100vh;
         background: #e0f2fe;
         color: #0c1a2e;

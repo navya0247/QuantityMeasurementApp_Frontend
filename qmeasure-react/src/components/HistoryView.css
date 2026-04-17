@@ -151,6 +151,7 @@
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--surface2) transparent;
+  -webkit-overflow-scrolling: touch;
 }
 .hist-full-body::-webkit-scrollbar { width: 5px; }
 .hist-full-body::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
@@ -214,3 +215,45 @@
   white-space: nowrap;
 }
 .hfi-result.err { color: #ef4444; font-weight: 500; font-size: 12px; }
+
+/* ── MOBILE RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .view-hdr {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .view-hdr h2 { font-size: 18px; }
+
+  .clr-btn { align-self: flex-start; }
+
+  /* Smaller filter buttons on mobile */
+  .filter-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  /* Shorter list on mobile */
+  .hist-full-body { max-height: 400px; }
+
+  /* Smaller result on mobile */
+  .hfi-result { max-width: 90px; font-size: 12px; }
+
+  /* No hover transform on touch */
+  .hfi:hover { border-color: transparent; }
+
+  /* Lock state on mobile */
+  .hist-lock-full { padding: 40px 20px; }
+}
+
+@media (max-width: 480px) {
+  .hfi {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .hfi-badge { width: 32px; height: 32px; font-size: 12px; }
+  .hfi-op { font-size: 12px; }
+  .hfi-det { font-size: 11px; }
+}

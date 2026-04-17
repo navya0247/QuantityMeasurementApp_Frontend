@@ -190,3 +190,90 @@
   color: var(--accent);
 }
 .sb-signin-btn:hover { background: rgba(99,102,241,0.25); }
+
+/* ── MOBILE: bottom navigation bar ─────────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 0;
+    /* stick to top */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-shrink: 0;
+  }
+
+  /* hide things we don't need in mobile top bar */
+  .sb-logo-txt,
+  .sb-section-lbl,
+  .sb-types,
+  .sb-bottom,
+  .sb-div { display: none; }
+
+  /* logo stays but smaller */
+  .sb-logo {
+    padding: 10px 12px;
+    border-bottom: none;
+    flex-shrink: 0;
+  }
+
+  /* nav becomes horizontal row */
+  .sb-nav {
+    flex-direction: row;
+    gap: 2px;
+    flex: 1;
+    justify-content: center;
+    padding: 6px 8px;
+  }
+
+  /* nav items become icon-only compact buttons */
+  .s-item {
+    flex-direction: column;
+    gap: 3px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 10px;
+    width: auto;
+    align-items: center;
+    text-align: center;
+  }
+
+  .s-item i {
+    width: auto;
+    font-size: 16px;
+  }
+
+  .s-item span {
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .s-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    margin-left: 0;
+    padding: 1px 5px;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sb-logo { padding: 8px 10px; }
+
+  .s-item {
+    padding: 7px 10px;
+    font-size: 9px;
+  }
+
+  .s-item i { font-size: 15px; }
+}

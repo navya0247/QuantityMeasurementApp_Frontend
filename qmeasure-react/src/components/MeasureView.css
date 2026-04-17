@@ -10,6 +10,7 @@
   z-index: 1000;
   display: flex; align-items: center; justify-content: center;
   animation: fadeIn 0.2s ease;
+  padding: 16px; /* FIXED: so modal doesn't touch edges on mobile */
 }
 @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
 
@@ -71,6 +72,7 @@
 .gb-btn:hover { opacity: 0.85; }
 
 /* ── Type grid ──────────────────────────────────────────────────── */
+/* FIXED: was always 4 columns, now responsive */
 .type-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
 .type-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 18px 12px; background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px; cursor: pointer; transition: all 0.2s; font-size: 13px; font-weight: 600; font-family: 'DM Sans',sans-serif; }
 .type-card i { font-size: 20px; }
@@ -78,6 +80,7 @@
 .type-card.active { color: #fff; box-shadow: 0 6px 20px rgba(0,0,0,0.3); transform: translateY(-2px); }
 
 /* ── Main layout ────────────────────────────────────────────────── */
+/* FIXED: was always 2 columns, now stacks on mobile */
 .measure-main { display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
 .form-col { display: flex; flex-direction: column; gap: 16px; }
 
@@ -95,7 +98,7 @@
 .arith-toggle:disabled { opacity: 0.4; cursor: not-allowed; }
 .arith-chev { margin-left: 2px; transition: transform 0.2s; font-size: 11px; }
 .arith-chev.open { transform: rotate(180deg); }
-.arith-sub { display: flex; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.arith-sub { display: flex; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); flex-wrap: wrap; }
 .arith-btn { display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--surface2); color: var(--muted); font-size: 12.5px; font-weight: 600; cursor: pointer; font-family: 'DM Sans',sans-serif; transition: all 0.18s; }
 .arith-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
 .arith-btn.active { background: rgba(99,102,241,0.15); border-color: var(--accent); color: var(--accent); }
@@ -189,3 +192,71 @@
 .hist-item-det { font-size: 10.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hist-item-res { font-size: 11.5px; font-weight: 700; color: var(--green); text-align: right; flex-shrink: 0; max-width: 90px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .hist-item-res.err { color: #ef4444; font-weight: 500; font-size: 10px; }
+
+/* ── MOBILE RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Type grid: 2x2 on mobile instead of 4 in a row */
+  .type-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .type-card {
+    padding: 14px 10px;
+    font-size: 12px;
+  }
+
+  /* Main layout: stack form and result vertically */
+  .measure-main {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Guest banner: stack on small screens */
+  .guest-banner {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .gb-btn { margin-left: 0; width: 100%; }
+
+  /* Inputs row: stack vertically on small screens */
+  .inputs-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  /* Hide the operator circle on mobile, keep it simple */
+  .op-circle { display: none; }
+
+  /* Target row */
+  .tgt-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .tgt-row label { white-space: normal; }
+
+  /* Modal padding on mobile */
+  .auth-modal {
+    padding: 20px 18px 18px;
+  }
+
+  /* Mini history max height reduced on mobile */
+  .mini-history { max-height: 160px; }
+
+  /* Right empty panel height */
+  .right-empty-panel { max-height: 380px; }
+}
+
+@media (max-width: 480px) {
+  .type-card {
+    padding: 12px 8px;
+    font-size: 11px;
+    gap: 6px;
+  }
+  .type-card i { font-size: 17px; }
+
+  .action-row { gap: 6px; }
+  .a-btn, .arith-toggle { padding: 7px 12px; font-size: 12px; }
+}
